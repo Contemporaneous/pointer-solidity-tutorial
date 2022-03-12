@@ -33,3 +33,7 @@ env.bat
 
 # vercel
 .vercel
+
+#hardhat
+artifacts/
+cache/
