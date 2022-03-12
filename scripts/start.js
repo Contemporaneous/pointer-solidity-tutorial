@@ -5,7 +5,7 @@ async function main() {
   
     console.log("Contract deployed to:", keyboardsContract.address);
   
-    const keyboards = await keyboardsContract.createdKeyboards;
+    const keyboards = await keyboardsContract.getKeyboards();
     console.log("We got the keyboards!", keyboards);
   }
   
