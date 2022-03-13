@@ -139,6 +139,10 @@ export default function Create() {
           Create Keyboard!
         </PrimaryButton>
       </form>
+        <div>
+          <h2 className="block text-lg font-medium text-gray-700">Preview</h2>
+          <Keyboard kind={keyboardKind} isPBT={isPBT} filter={filter} />
+        </div>
     </div>
   )
 }
