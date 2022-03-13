@@ -3,6 +3,7 @@ import PrimaryButton from "../components/primary-button";
 import abi from "../utils/Keyboards.json"
 import { ethers } from "ethers";
 import Keyboard from "../components/keyboard";
+import TipButton from "../components/tip-button";
 import addressesEqual from "../utils/addressesEqual";
 import { UserCircleIcon } from "@heroicons/react/solid"
 
@@ -88,8 +89,8 @@ export default function Home() {
                 <span className="absolute top-1 right-6">
                 {addressesEqual(owner, connectedAccount) ?
                   <UserCircleIcon className="h-5 w-5 text-indigo-100" /> :
-                  <button>Tip!</button>
-                }
+                  <TipButton ethereum={ethereum} index={i} />
+                } 
                 </span>
               </div>
             )
