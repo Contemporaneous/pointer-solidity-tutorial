@@ -20,6 +20,16 @@ contract Keyboards {
         address owner;
     }
 
+    event KeyboardCreated(
+        Keyboard keyboard
+    );
+
+    event TipSent(
+        address recipient,
+        uint256 amount
+    );
+
+
     Keyboard[] public createdKeyboards;
 
     function create( KeyboardKind _kind, bool _isPBT, string calldata _filter) external {
@@ -30,6 +40,7 @@ contract Keyboards {
             owner: msg.sender
         });
         createdKeyboards.push(newKeyboard);
+        emit KeyboardCreated(newKeyboard);
     }
 
     function getKeyboards() view public returns(Keyboard[] memory) {
@@ -39,6 +50,7 @@ contract Keyboards {
     function tip(uint256 _index) external payable  {
         address payable owner = payable(createdKeyboards[_index].owner);
         owner.transfer(msg.value);
+        emit TipSent(owner, msg.value);
     }
 
 }
