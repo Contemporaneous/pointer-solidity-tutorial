@@ -5,8 +5,8 @@ import { Toaster } from 'react-hot-toast'
 function MyApp({ Component, pageProps }) {
   return (
       <MetaMaskAccountProvider>
-      <Toaster />
-      <Component {...pageProps} />
+        <Toaster />
+        <Component {...pageProps} />
       </MetaMaskAccountProvider>
   )
 }

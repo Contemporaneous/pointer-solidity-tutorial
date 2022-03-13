@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import PrimaryButton from "../components/primary-button";
 import Keyboard from "../components/keyboard";
 import getKeyboardsContract from "../utils/getKeyboardsContract"
+import { useMetaMaskAccount} from '../components/meta-mask-account-provider'
 
 export default function Create() {
 
@@ -14,9 +15,6 @@ export default function Create() {
   const [mining, setMining] = useState(false)
 
   const keyboardsContract = getKeyboardsContract(ethereum);
-
-  
-  useEffect(() => getConnectedAccount(), []);
 
   const submitCreate = async (e) => {
     e.preventDefault();

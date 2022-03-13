@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import PrimaryButton from "../components/primary-button";
-import abi from "../utils/Keyboards.json"
 import { ethers } from "ethers";
 import Keyboard from "../components/keyboard";
 import TipButton from "../components/tip-button";
@@ -8,6 +7,7 @@ import addressesEqual from "../utils/addressesEqual";
 import { UserCircleIcon } from "@heroicons/react/solid"
 import getKeyboardsContract from "../utils/getKeyboardsContract"
 import { toast } from "react-hot-toast"
+import { useMetaMaskAccount} from '../components/meta-mask-account-provider'
 
 export default function Home() {
   const { ethereum, connectedAccount, connectAccount } = useMetaMaskAccount();
@@ -54,9 +54,6 @@ export default function Home() {
   }
   
   useEffect(addContractEventHandlers, [!!keyboardsContract, connectedAccount]);
-
-  useEffect(() => getConnectedAccount(), []);
-
 
   if (!ethereum) {
     return <p>Please install MetaMask to connect to this site</p>
