@@ -8,7 +8,14 @@ export default function MetaMaskAccountProvider({children}) {
   
   const setEthereumFromWindow = async () => {
     if(window.ethereum) {
-      setEthereum(window.ethereum);
+        window.ethereum.on('chainChanged', (_chainId) => window.location.reload());
+        const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+        const rinkebyId = '0x4'; 
+        if(chainId === rinkebyId) {
+        setEthereum(window.ethereum);
+        } else {
+        alert('Please use Rinkeby network');
+        }
     }
   }
   useEffect(() => setEthereumFromWindow(), [])
